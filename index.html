@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Donut SMP Center 🍩</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- LIGHT/DARK TOGGLE -->
+    <button id="toggleBtn" class="toggle-button floating-toggle">
+        <span id="themeIcon">🌙</span>
+    </button>
+
+    <!-- HOME SECTION -->
+    <div id="homeSection" class="main-card">
+        <h1>Donut SMP Center 🍩</h1>
+        <button id="spawnerBtn" class="main-button" onclick="location.hash='#spawner'">Spawner Rates 💀</button>
+        <button id="farmBtn" class="main-button" onclick="location.hash='#farm'">Farm Rates 🌾</button>
+        <button class="main-button" onclick="location.hash='#dashboard'">Farm Dashboard 📊</button>
+    </div>
+
+    <!-- SPAWNER SECTION -->
+    <div id="spawnerSection" class="main-card" style="display:none;">
+        <h1>Spawner Rates</h1>
+        <h2>Select Spawner Type</h2>
+        <button id="skeletonBtn" class="main-button">Skeleton Spawner 💀</button>
+
+        
+        <div id="calculator">
+            <h2>Skeleton Spawner 💀</h2>
+            <p>How many spawners do you have?</p>
+            <input type="number" id="spawnerInput" placeholder="Enter full number" step="1" min="0">
+
+            <button id="rateToggle" class="main-button">Switch to Bones / Hour</button>
+            <button id="stackToggle" class="main-button">Show in Stacks</button>
+
+            <p id="result"></p>
+
+            <div class="progress-container">
+                <div id="progressBar" class="progress-bar"></div>
+            </div>
+        </div>
+
+        <div class="back-button-container">
+            <button class="main-button" onclick="location.hash='#home'">← Back</button>
+        </div>
+    </div>
+
+    <!-- FARM SEARCH SECTION -->
+    <div id="farmSection" class="main-card" style="display:none;">
+    <h1>Farm Rates</h1>
+    <div id="farmTypeButtons" style="margin:15px 0;">
+    <button class="main-button farm-type-btn" data-type="all">All Farms</button>
+    <button class="main-button farm-type-btn" data-type="kelp">Kelp Farms</button>
+    </div>
+
+
+
+    <!-- Farm search & stats (hidden until type selected) -->
+    <div id="farmContent" style="display:none;">
+        <input type="text" id="farmSearch" placeholder="Search for farm modules..." autocomplete="off">
+        <ul id="farmSuggestions"></ul>
+
+        <div id="farmStats" style="margin-top:20px;"></div>
+    </div>
+
+    <div class="back-button-container">
+        <button class="main-button" onclick="location.hash='#home'">← Back</button>
+    </div>
+</div>
+
+    <!-- FARM DASHBOARD SECTION -->
+    <div id="farmDashboardSection" class="main-card" style="display:none;">
+        <h1>Farm Dashboard</h1>
+
+        <!-- Search & Filters -->
+        <input type="text" id="farmSearchDashboard" placeholder="Search farms..." style="width:90%; margin-bottom:10px;">
+
+        <!-- Normal Select Dropdown -->
+        <select id="filterSelect" class="main-button" style="width:90%; padding:10px; font-size:16px; margin-bottom:10px;">
+            <option value="all" selected>Show All</option>
+            <option value="bones">Uses Bones</option>
+            <option value="blaze">Uses Blaze Rods</option>
+            <option value="profit">Highest Profit</option>
+        </select>
+
+        <!-- Table container -->
+        <div id="farmTableContainer"></div>
+
+        <!-- Back Button -->
+        <div class="back-button-container">
+            <button class="main-button" onclick="location.hash='#home'">← Back</button>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>

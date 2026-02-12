@@ -1,0 +1,244 @@
+/* GLOBAL RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ROOT VARIABLES */
+:root {
+    --bg-gradient: linear-gradient(135deg, #1e1f29, #2b2d42);
+    --text-color: #f1f1f1;
+    --card-bg: rgba(255,255,255,0.08);
+    --input-bg: rgba(255,255,255,0.18);
+    --input-placeholder: rgba(255,255,255,0.6);
+    --toggle-bg: rgba(255,255,255,0.18);
+}
+
+/* LIGHT MODE VARIABLES */
+body.light {
+    --bg-gradient: linear-gradient(135deg, #eef2ff, #f8fafc);
+    --text-color: #111827;
+    --card-bg: rgba(0,0,0,0.07);
+    --input-bg: rgba(0,0,0,0.15);
+    --input-placeholder: rgba(0,0,0,0.6);
+    --toggle-bg: rgba(0,0,0,0.25);
+}
+
+/* BODY */
+body {
+    font-family: "Segoe UI", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    color: var(--text-color);
+    transition: background 1s ease, color 0.8s ease;
+    background: var(--bg-gradient);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    z-index:-1;
+    background: var(--bg-gradient);
+    transition: background 1s ease;
+}
+
+/* MAIN CARD */
+.main-card {
+    padding: 40px 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    background: var(--card-bg);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    text-align: center;
+    transition: background 1s ease, color 0.8s ease;
+    max-width: 400px;
+    width: 90%;
+}
+
+/* HEADINGS */
+h1, h2, p {
+    color: var(--text-color);
+    transition: color 0.8s ease;
+}
+
+/* MAIN BUTTON */
+.main-button {
+    position: relative;
+    overflow: hidden;
+    padding: 14px 28px;
+    font-size: 17px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(99,102,241,0.4);
+    margin: 10px 0;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.6s ease;
+}
+
+.main-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(139,92,246,0.6);
+}
+
+/* FLOATING TOGGLE */
+.floating-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    padding: 10px 18px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    backdrop-filter: blur(10px);
+    background: var(--toggle-bg);
+    color: var(--text-color);
+    transition: background 0.8s ease, color 0.8s ease, transform 0.3s ease;
+}
+
+.floating-toggle:hover { transform: scale(1.05); }
+
+/* EMOJI ANIMATIONS */
+#themeIcon { display: inline-block; transition: transform 0.5s ease, opacity 0.3s ease; }
+.spin { transform: rotate(180deg) scale(1.2); opacity: 0; }
+
+/* CALCULATOR CARD */
+#calculator {
+    display: none;
+    margin-top: 20px;
+    padding: 25px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    background: var(--card-bg);
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.4s ease, transform 0.4s ease, background 0.8s ease, color 0.8s ease;
+}
+
+#calculator.show { opacity: 1; transform: scale(1); }
+
+/* INPUTS */
+input {
+    padding: 12px;
+    font-size: 16px;
+    width: 220px;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+    margin-top: 10px;
+    outline: none;
+    background: var(--input-bg);
+    color: var(--text-color);
+    transition: background 0.8s ease, color 0.8s ease, box-shadow 0.3s ease;
+}
+
+input::placeholder { color: var(--input-placeholder); transition: color 0.8s ease; }
+input:focus { box-shadow: 0 0 10px rgba(99,102,241,0.6); }
+
+/* RESULT TEXT */
+#result { margin-top: 20px; font-size: 20px; font-weight: 500; color: var(--text-color); transition: color 0.8s ease; }
+
+/* PROGRESS BAR */
+.progress-container {
+    width: 100%;
+    max-width: 300px;
+    height: 25px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 15px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    border-radius: 15px;
+    transition: width 1s ease, background 0.6s ease;
+}
+
+/* FARM SUGGESTIONS */
+#farmSuggestions {
+    list-style: none;
+    text-align: left;
+    margin-top: 5px;
+    padding-left: 0;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 6px;
+    max-height: 150px;
+    overflow-y: auto;
+    background: var(--card-bg);
+}
+#farmSuggestions li:hover { background: rgba(99,102,241,0.2); }
+
+/* CUSTOM DROPDOWN */
+.custom-dropdown {
+    position: relative;
+    width: 90%;
+    margin: 0 auto 10px auto;
+}
+
+.custom-dropdown .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--card-bg);
+    color: var(--text-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0 0;
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;
+    z-index: 10;
+}
+
+.custom-dropdown .dropdown-options li {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.custom-dropdown .dropdown-options li:hover { background: rgba(99,102,241,0.2); }
+.custom-dropdown .dropdown-options li.selected { background: rgba(99,102,241,0.4); }
+
+/* RESPONSIVE */
+@media (max-width: 500px) {
+    .main-card { padding: 30px 20px; }
+    input { width: 180px; }
+}
+/* STANDARD SELECT STYLE */
+select {
+    width: 90%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: none;
+    background: var(--card-bg);
+    color: var(--text-color);
+    outline: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background 0.8s ease, color 0.8s ease, box-shadow 0.3s ease;
+    text-align: left;
+}
+
+/* Placeholder / dropdown arrow color fix */
+select option {
+    background: var(--card-bg);
+    color: var(--text-color);
+}
+
+select:focus {
+    box-shadow: 0 0 10px rgba(99,102,241,0.6);
+}
