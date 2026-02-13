@@ -42,6 +42,34 @@ let farmModules = [
     }
 ];
 
+// ---------------------------
+// FIX: Define the missing function
+function showSkeleton() {
+    // Show the calculator when Skeleton Spawner button is clicked
+    const calculator = document.getElementById("calculator");
+    if (calculator) {
+        calculator.style.display = "block";
+    }
+
+    // Optionally, reset input/results
+    const input = document.getElementById("spawnerInput");
+    const result = document.getElementById("result");
+    const progressBar = document.getElementById("progressBar");
+    if (input) input.value = "";
+    if (result) result.innerText = "";
+    if (progressBar) progressBar.style.width = "0%";
+}
+
+// Make sure the button actually calls this
+document.addEventListener("DOMContentLoaded", () => {
+    const skeletonBtn = document.getElementById("skeletonBtn");
+    if (skeletonBtn) {
+        skeletonBtn.addEventListener("click", showSkeleton);
+    }
+});
+
+
+// ---------------------------
 document.addEventListener("DOMContentLoaded", () => {
     const toggleBtn = document.getElementById("toggleBtn");
     const themeIcon = document.getElementById("themeIcon");
@@ -61,7 +89,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const skeletonBtn = document.getElementById("skeletonBtn");
     if (skeletonBtn) {
         skeletonBtn.addEventListener("click", showSkeleton);
-    }
+}
+
 
     let selectedFarmType = "all";
 
@@ -431,6 +460,10 @@ function renderFarmTable() {
         `;
     });
 
-    tableHTML += "</tbody></table>";
+    tableHTML += `
+            </tbody>
+        </table>
+    `;
+
     container.innerHTML = tableHTML;
 }
