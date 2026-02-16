@@ -25,17 +25,17 @@ let farmModules = [
         name: "Lox Starter Kelp Farm",
         stats: {
             type: "kelp",
-            itemsPerSecond: 0, // fill if known
-            itemsPerMinute: 0,
-            itemsPerHour: 0,
+            itemsPerSecond: 500000 / 3600, // fill if known
+            itemsPerMinute: 500000 / 60,
+            itemsPerHour: 500000,
 
-            resourcesPerSecondBones: 700000 / 3600,
-            resourcesPerMinuteBones: 700000 / 60,
-            resourcesPerHourBones: 700000,
+            resourcesPerSecondBones: 166666 / 3600,
+            resourcesPerMinuteBones: 166666 / 60,
+            resourcesPerHourBones: 166666,
 
-            resourcesPerSecondBlaze: 1400000 / 3600,
-            resourcesPerMinuteBlaze: 1400000 / 60,
-            resourcesPerHourBlaze: 1400000,
+            resourcesPerSecondBlaze: 466666 / 3600,
+            resourcesPerMinuteBlaze: 46666 / 60,
+            resourcesPerHourBlaze: 46666,
 
             estimatedProfitPerHour: 25000000
         }
@@ -45,13 +45,15 @@ let farmModules = [
 // ---------------------------
 // FIX: Define the missing function
 function showSkeleton() {
-    // Show the calculator when Skeleton Spawner button is clicked
     const calculator = document.getElementById("calculator");
     if (calculator) {
-        calculator.style.display = "block";
+        calculator.style.display = "block";  // make it visible
+        calculator.style.opacity = "1";      // ensure it's not transparent
+        calculator.style.position = "relative"; // default positioning
+        calculator.style.zIndex = "10";      // make sure it's above other elements
     }
 
-    // Optionally, reset input/results
+    // Reset input/results
     const input = document.getElementById("spawnerInput");
     const result = document.getElementById("result");
     const progressBar = document.getElementById("progressBar");
@@ -59,6 +61,7 @@ function showSkeleton() {
     if (result) result.innerText = "";
     if (progressBar) progressBar.style.width = "0%";
 }
+
 
 // Make sure the button actually calls this
 document.addEventListener("DOMContentLoaded", () => {

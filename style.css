@@ -242,3 +242,8 @@ select option {
 select:focus {
     box-shadow: 0 0 10px rgba(99,102,241,0.6);
 }
+/* Make dropdown options black */
+#filterSelect option {
+    color: black;
+    background-color: white; /* ensures contrast when hovered or selected */
+}
