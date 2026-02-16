@@ -22,6 +22,25 @@ let farmModules = [
         }
     },
     {
+        name: "Lox V11 Kelp Farm",
+        stats: {
+            type: "kelp",
+            itemsPerSecond: 2595000 / 3600,
+            itemsPerMinute: 2595000 / 60,
+            itemsPerHour: 2595000,
+
+            resourcesPerSecondBones: 865000 / 3600,
+            resourcesPerMinuteBones: 865000 / 60,
+            resourcesPerHourBones: 865000,
+
+            resourcesPerSecondBlaze: 216250 / 3600,
+            resourcesPerMinuteBlaze: 216250 / 60,
+            resourcesPerHourBlaze: 216250,
+
+            estimatedProfitPerHour: 216000000
+        }
+    },
+    {
         name: "Lox Starter Kelp Farm",
         stats: {
             type: "kelp",
