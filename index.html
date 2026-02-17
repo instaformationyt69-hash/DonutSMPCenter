@@ -17,8 +17,8 @@
     <div id="homeSection" class="main-card">
         <h1>Donut SMP Center 🍩</h1>
         <button id="spawnerBtn" class="main-button" onclick="location.hash='#spawner'">Spawner Rates 💀</button>
-        <button id="farmBtn" class="main-button" onclick="location.hash='#farm'">Farm Rates 🌾</button>
         <button class="main-button" onclick="location.hash='#dashboard'">Farm Dashboard 📊</button>
+        
     </div>
 
     <!-- SPAWNER SECTION -->
@@ -48,53 +48,56 @@
         </div>
     </div>
 
-    <!-- FARM SEARCH SECTION -->
-    <div id="farmSection" class="main-card" style="display:none;">
-    <h1>Farm Rates</h1>
-    <div id="farmTypeButtons" style="margin:15px 0;">
-    <button class="main-button farm-type-btn" data-type="all">All Farms</button>
-    <button class="main-button farm-type-btn" data-type="kelp">Kelp Farms</button>
-    </div>
-
-
-
-    <!-- Farm search & stats (hidden until type selected) -->
-    <div id="farmContent" style="display:none;">
-        <input type="text" id="farmSearch" placeholder="Search for farm modules..." autocomplete="off">
-        <ul id="farmSuggestions"></ul>
-
-        <div id="farmStats" style="margin-top:20px;"></div>
-    </div>
-
-    <div class="back-button-container">
-        <button class="main-button" onclick="location.hash='#home'">← Back</button>
-    </div>
-</div>
-
     <!-- FARM DASHBOARD SECTION -->
-    <div id="farmDashboardSection" class="main-card" style="display:none;">
-        <h1>Farm Dashboard</h1>
+<div id="farmDashboardSection" class="main-card" style="display:none;">
+    <h1>Farm Dashboard</h1>
 
-        <!-- Search & Filters -->
-        <input type="text" id="farmSearchDashboard" placeholder="Search farms..." style="width:90%; margin-bottom:10px;">
+    <div id="dashboardScrollContainer" style="max-height:75vh; overflow-y:auto; padding-right:5px;">
+        
+        <!-- Farm Type Buttons -->
+        <div id="dashboardFarmTypeButtons">
+            <button class="main-button dashboard-type-btn" data-type="all">All Farms</button>
+            <button class="main-button dashboard-type-btn" data-type="kelp">Kelp Farms</button>
+        </div>
 
-        <!-- Normal Select Dropdown -->
-        <select id="filterSelect" class="main-button" style="width:90%; padding:10px; font-size:16px; margin-bottom:10px;">
+        <!-- Farm Profit Calculator (collapsible) -->
+        <details style="margin-top:15px;">
+            <summary>Farm Profit Calculator 🧮</summary>
+            <div id="profitCalcContainer" style="margin-top:10px;">
+                <select id="farmSelect"></select>
+                <input id="bonePrice" placeholder="Bone Price" type="number" step="0.01">
+                <input id="blazePrice" placeholder="Blaze Rod Price" type="number" step="0.01">
+                <p id="profitOutput"></p>
+            </div>
+        </details>
+
+        <!-- Best Farm for Budget Finder (collapsible) -->
+        <details style="margin-top:15px;">
+            <summary>Best Farm For My Budget 📈</summary>
+            <div id="bestFarmContainer" style="margin-top:10px;">
+                <input id="budgetInput" placeholder="Money">
+                <input id="bonePriceBudget" placeholder="Bone Price">
+                <input id="blazePriceBudget" placeholder="Blaze Rod Price">
+                <p id="bestFarmOutput"></p>
+            </div>
+        </details>
+
+        <!-- Filters and table -->
+        <input id="farmSearchDashboard" placeholder="Search farms..." type="text" style="width:90%; margin-top:10px;">
+        <select id="filterSelect" style="width:90%; margin-top:10px;">
             <option value="all" selected>Show All</option>
             <option value="bones">Uses Bones</option>
             <option value="blaze">Uses Blaze Rods</option>
             <option value="profit">Highest Profit</option>
         </select>
 
-        <!-- Table container -->
-        <div id="farmTableContainer"></div>
-
-        <!-- Back Button -->
-        <div class="back-button-container">
-            <button class="main-button" onclick="location.hash='#home'">← Back</button>
-        </div>
+        <div id="farmTableContainer" style="max-height:400px; overflow-y:auto; margin-top:10px;"></div>
+        <button id="dashboardBackBtn" class="main-button" style="margin-top:20px;">⬅ Back</button>
     </div>
+</div>
+
 
 <script src="script.js"></script>
 </body>
 </html>
+
